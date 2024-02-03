@@ -1,0 +1,55 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Organization {
+  id       String    @id @db.VarChar(3)
+  name     String    @db.Text
+  pricings Pricing[]
+}
+
+enum ItemType {
+  perishable
+  non_perishable
+}
+
+model Item {
+  id          Int       @id @default(autoincrement())
+  type        ItemType
+  description String    @db.VarChar(255)
+  pricings    Pricing[]
+}
+
+enum ZoneType {
+  north
+  north_east
+  east
+  south_east
+  south
+  south_west
+  west
+  north_west
+  central
+}
+
+model Pricing {
+  id             Int    @id @default(autoincrement())
+  organizationId String @db.VarChar(3)
+  itemId         Int    @db.Integer
+
+  zone ZoneType
+
+  baseDistanceInKm Int @default(5)
+  kmPrice          Int @default(150)
+  fixPrice         Int @default(1000)
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  item         Item         @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, itemId, zone])
+}
