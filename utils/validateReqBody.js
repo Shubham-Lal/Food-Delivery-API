@@ -1,26 +1,10 @@
-import { Request } from "express";
-import { validateZone } from "./validateZone";
-import { validateOrganizationId } from "./validateOrganizationId";
-import { validateTotalDistance } from "./validateTotalDistance";
-import { validateItemType } from "./validateItemType";
-import { ZoneType, ItemType } from "@prisma/client";
+import { validateZone } from "./validateZone.js";
+import { validateOrganizationId } from "./validateOrganizationId.js";
+import { validateTotalDistance } from "./validateTotalDistance.js";
+import { validateItemType } from "./validateItemType.js";
 
-interface ValidationData {
-    validatedZone: ZoneType;
-    validatedOrganizationId: string | number | undefined;
-    validatedTotalDistance: string | number | undefined;
-    validatedItemType: ItemType;
-}
-
-interface RequestBody {
-    zone: string;
-    organization_id: string;
-    total_distance: number;
-    item_type: string;
-}
-
-export const validateReqBody = (req: Request): { success: boolean; data?: ValidationData; error?: string } => {
-    const missingFields: string[] = [];
+export const validateReqBody = (req) => {
+    const missingFields = [];
 
     if (!("zone" in req.body)) missingFields.push("zone");
     if (!("organization_id" in req.body)) missingFields.push("organization_id");
@@ -34,7 +18,7 @@ export const validateReqBody = (req: Request): { success: boolean; data?: Valida
         };
     }
 
-    const { zone, organization_id, total_distance, item_type }: RequestBody = req.body;
+    const { zone, organization_id, total_distance, item_type } = req.body;
 
     const validationResults = [
         validateZone(zone),
@@ -56,10 +40,10 @@ export const validateReqBody = (req: Request): { success: boolean; data?: Valida
     return {
         success: true,
         data: {
-            validatedZone: validationResults[0].data as ZoneType,
+            validatedZone: validationResults[0].data,
             validatedOrganizationId: validationResults[1].data,
             validatedTotalDistance: validationResults[2].data,
-            validatedItemType: validationResults[3].data as ItemType
+            validatedItemType: validationResults[3].data
         }
     };
 };

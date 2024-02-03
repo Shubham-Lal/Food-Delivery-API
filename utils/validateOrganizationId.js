@@ -1,4 +1,4 @@
-export const validateOrganizationId = (organization_id: string) => {
+export const validateOrganizationId = (organization_id) => {
     if (typeof organization_id !== 'string') {
         return { error: 'Invalid organization_id: must be a string' };
     }

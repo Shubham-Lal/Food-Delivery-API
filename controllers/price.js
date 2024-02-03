@@ -1,16 +1,7 @@
-import { Request, Response } from "express";
-import { validateReqBody } from "../utils/validateReqBody";
-import { db } from "../database/db";
-import { ZoneType, ItemType } from "@prisma/client";
+import { validateReqBody } from "../utils/validateReqBody.js";
+import db from "../database/db.js";
 
-interface ValidationData {
-    validatedZone: ZoneType;
-    validatedOrganizationId: string;
-    validatedTotalDistance: number;
-    validatedItemType: ItemType;
-}
-
-const calculatePrice = async (req: Request, res: Response) => {
+const calculatePrice = async (req, res) => {
     try {
         const validationResult = validateReqBody(req);
 
@@ -18,7 +9,12 @@ const calculatePrice = async (req: Request, res: Response) => {
             return res.status(400).json(validationResult);
         }
 
-        const { validatedZone, validatedOrganizationId, validatedTotalDistance, validatedItemType }: ValidationData = validationResult.data as ValidationData;
+        const {
+            validatedZone,
+            validatedOrganizationId,
+            validatedTotalDistance,
+            validatedItemType
+        } = validationResult.data;
 
         const pricingDetails = await db.pricing.findFirst({
             where: {

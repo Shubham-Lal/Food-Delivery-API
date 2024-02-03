@@ -1,10 +1,2 @@
 node_modules
 .env
-
-prisma/generated
-
-server.js
-
-controllers/*.js
-database/*.js
-utils/*.js

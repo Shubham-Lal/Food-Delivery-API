@@ -1,4 +1,4 @@
-export const validateTotalDistance = (total_distance: number) => {
+export const validateTotalDistance = (total_distance) => {
     if (typeof total_distance !== 'number') {
         return { error: 'Invalid total_distance: must be a number' };
     }

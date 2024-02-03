@@ -1,6 +1,4 @@
-import { ZoneType } from "@prisma/client";
-
-export const validateZone = (zone: string) => {
+export const validateZone = (zone) => {
     if (typeof zone !== 'string') {
         return { error: 'Invalid zone: must be a string' };
     }
@@ -23,5 +21,5 @@ export const validateZone = (zone: string) => {
 
     const mappedZone = zone.replace('-', '_').toLowerCase();
 
-    return { data: mappedZone as ZoneType };
+    return { data: mappedZone };
 };

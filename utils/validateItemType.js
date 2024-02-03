@@ -1,6 +1,4 @@
-import { ItemType } from "@prisma/client";
-
-export const validateItemType = (item_type: string) => {
+export const validateItemType = (item_type) => {
     if (typeof item_type !== 'string') {
         return { error: 'Invalid item_type: must be a string' };
     }
@@ -12,5 +10,5 @@ export const validateItemType = (item_type: string) => {
 
     const mappedItemType = item_type.replace('-', '_').toLowerCase();
 
-    return { data: mappedItemType as ItemType };
+    return { data: mappedItemType };
 };

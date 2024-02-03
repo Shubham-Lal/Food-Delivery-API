@@ -1,13 +1,13 @@
 import dotenv from "dotenv";
-import express, { Express, Request, Response } from "express";
-import { calculatePrice } from "./controllers/price";
+import express from "express";
+import { calculatePrice } from "./controllers/price.js";
 
 dotenv.config();
 
-const server: Express = express();
+const server = express();
 server.use(express.json());
 
-server.get("/", (req: Request, res: Response) => {
+server.get("/", (req, res) => {
     res.send("Server running...");
 });
 
