@@ -1,5 +1,7 @@
+import { PrismaClient } from '@prisma/client'
 import { validateReqBody } from "../utils/validateReqBody.js";
-import db from "../database/db.js";
+
+const prisma = new PrismaClient();
 
 const calculatePrice = async (req, res) => {
     try {
@@ -16,7 +18,7 @@ const calculatePrice = async (req, res) => {
             validatedItemType
         } = validationResult.data;
 
-        const pricingDetails = await db.pricing.findFirst({
+        const pricingDetails = await prisma.pricing.findFirst({
             where: {
                 AND: [
                     { organizationId: validatedOrganizationId },
