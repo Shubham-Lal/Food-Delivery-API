@@ -2,10 +2,10 @@
   "name": "food-delivery-api",
   "version": "1.0.0",
   "main": "server.ts",
+  "type": "commonjs",
   "scripts": {
     "dev": "nodemon server.ts",
-    "start": "npx prisma generate && node server.ts",
-    "postinstall": "prisma generate"
+    "start": "npx prisma generate && tsc && node server.js"
   },
   "dependencies": {
     "@prisma/client": "^5.9.1",
