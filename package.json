@@ -2,6 +2,7 @@
   "name": "food-delivery-api",
   "version": "1.0.0",
   "main": "server.ts",
+  "type": "commonjs",
   "scripts": {
     "dev": "nodemon server.ts",
     "start": "npx prisma generate && node server.ts"
