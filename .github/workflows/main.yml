@@ -32,4 +32,4 @@ jobs:
 
     - name: Upload backend files
       run: |
-        lftp -e "mirror --only-newer --parallel=100 -R ./server/ /viga-food-delivery-api.shubhamlal.in/" ${{ secrets.FTP_SERVER }}
+        lftp -e "mirror --only-newer --parallel=100 -R ./ /viga-food-delivery-api.shubhamlal.in/" ${{ secrets.FTP_SERVER }}
