@@ -22,4 +22,4 @@
 - `fixPrice` attribute represents the fixed price for the delivery. By default, it is set to 1000 cents (equivalent to 10€).
 - `organization` attribute establishes a one-to-many relationship between the `Organization` and `Pricing` models.
 - `item` attribute establishes a one-to-many relationship between the `Item` and `Pricing` models.
-- `@@unique` attribute represents the combination of `organizationId, `itemId`, and `zone` is unique in the Pricing table.
+- `@@unique` attribute represents the combination of `organizationId`, `itemId`, and `zone` is unique in the Pricing table.
