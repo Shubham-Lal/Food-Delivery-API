@@ -3,6 +3,10 @@ module.exports.validateOrganizationId = (organization_id) => {
         return { error: 'Invalid organization_id: must be a string' };
     }
 
+    if (!organization_id.trim()) {
+        return { error: 'Invalid organization_id: empty organization id' };
+    }
+
     const formattedId = organization_id.padStart(3, '0');
     return { data: formattedId };
 };
