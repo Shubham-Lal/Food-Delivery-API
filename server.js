@@ -28,7 +28,15 @@ const options = {
     apis: ["./controllers/price.js"],
 };
 const specs = swaggerJsdoc(options);
-server.use("/docs", swaggerUi.serve, swaggerUi.setup(specs, { customfavIcon: "/favicon.ico", customSiteTitle: "Food Delivery API", customCssUrl: "/swagger-dark.css" }));
+server.use(
+    "/docs",
+    swaggerUi.serve,
+    swaggerUi.setup(specs, {
+        customSiteTitle: "Food Delivery API",
+        customfavIcon: "/favicon.ico",
+        customCssUrl: ["/swagger-dark.css", "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css"]
+    })
+);
 
 server.post("/api/calculate-price", calculatePrice);
 
