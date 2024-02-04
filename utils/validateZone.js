@@ -1,4 +1,4 @@
-export const validateZone = (zone) => {
+module.exports.validateZone = (zone) => {
     if (typeof zone !== 'string') {
         return { error: 'Invalid zone: must be a string' };
     }

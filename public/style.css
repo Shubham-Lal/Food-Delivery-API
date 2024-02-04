@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100svh;
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+ul li {
+    font-size: 20px;
+}
+
+a {
+    color: gold;
+}

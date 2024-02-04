@@ -1,9 +1,9 @@
-import { validateZone } from "./validateZone.js";
-import { validateOrganizationId } from "./validateOrganizationId.js";
-import { validateTotalDistance } from "./validateTotalDistance.js";
-import { validateItemType } from "./validateItemType.js";
+const { validateZone } = require("./validateZone.js");
+const { validateOrganizationId } = require("./validateOrganizationId.js");
+const { validateTotalDistance } = require("./validateTotalDistance.js");
+const { validateItemType } = require("./validateItemType.js");
 
-export const validateReqBody = (req) => {
+module.exports.validateReqBody = (req) => {
     const missingFields = [];
 
     if (!("zone" in req.body)) missingFields.push("zone");
