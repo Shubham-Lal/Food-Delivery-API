@@ -1,0 +1,54 @@
+.topbar {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: black;
+        color: white;
+    }
+
+    .swagger-ui h2,
+    .swagger-ui h3,
+    .swagger-ui h4,
+    .swagger-ui h5,
+    .swagger-ui p,
+    .swagger-ui td,
+    .swagger-ui button,
+    .swagger-ui .opblock-summary-description,
+    .swagger-ui .opblock-summary-path {
+        color: white !important;
+    }
+
+    .swagger-ui .opblock-section-header {
+        background: #1b1b1b !important;
+    }
+
+    .swagger-ui svg {
+        fill: white !important;
+    }
+
+    .swagger-ui .body-param__example,
+    .swagger-ui .highlight-code .example {
+        font-size: 15px !important;
+    }
+
+    .swagger-ui textarea {
+        background: white;
+        color: black;
+        font-size: 15px;
+    }
+
+    .swagger-ui .response-col_links {
+        display: none;
+    }
+
+    .swagger-ui .loading-container .loading::before {
+        border: 2px solid white !important;
+        border-top-color: rgba(0, 0, 0, .6) !important;
+    }
+
+    .swagger-ui .loading-container .loading::after {
+        color: white !important;
+    }
+}

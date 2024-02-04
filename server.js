@@ -28,7 +28,7 @@ const options = {
     apis: ["./controllers/price.js"],
 };
 const specs = swaggerJsdoc(options);
-server.use("/doc", swaggerUi.serve, swaggerUi.setup(specs));
+server.use("/docs", swaggerUi.serve, swaggerUi.setup(specs, { customfavIcon: "/favicon.ico", customSiteTitle: "Food Delivery API", customCssUrl: "/swagger-dark.css" }));
 
 server.post("/api/calculate-price", calculatePrice);
 
