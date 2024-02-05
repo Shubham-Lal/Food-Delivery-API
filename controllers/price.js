@@ -54,6 +54,16 @@ const prisma = new PrismaClient();
  *                   type: string
  *       500:
  *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   default: false
+ *                 error:
+ *                   type: string
  */
 
 module.exports.calculatePrice = async (req, res) => {
@@ -78,7 +88,8 @@ module.exports.calculatePrice = async (req, res) => {
                     { item: { type: validatedItemType } },
                     { zone: validatedZone }
                 ],
-            }
+            },
+            include: { item: true }
         });
         if (!pricingDetails) {
             return res.status(200).json({
@@ -87,11 +98,14 @@ module.exports.calculatePrice = async (req, res) => {
             });
         }
 
-        const totalCost = pricingDetails.fixPrice + ((validatedTotalDistance - pricingDetails.baseDistanceInKm) * pricingDetails.kmPrice);
+        const fixPrice = 1000;
+        const baseDistanceInKm = 5;
+        const kmPrice = pricingDetails.item.type === "perishable" ? 150 : 100;
+
+        const totalCost = fixPrice + ((validatedTotalDistance - baseDistanceInKm) * kmPrice);
 
         res.status(200).json({ success: true, total_price: (totalCost / 100) });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: '[server]: Internal server error' });
+        res.status(500).json({ success: false, error: '[server]: Internal server error' });
     }
 };

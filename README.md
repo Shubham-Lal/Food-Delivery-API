@@ -2,19 +2,10 @@
 
 [Live API URL](https://viga-food-delivery-api.vercel.app)
 
-**Available Routes**
+#### Available Routes
 - [Home page](https://viga-food-delivery-api.vercel.app)
 - [Swagger page](https://viga-food-delivery-api.vercel.app/docs)
 - [Calculate price](https://viga-food-delivery-api.vercel.app/api/calculate-price)
-
-**Project Info**
-[View here](https://github.com/Shubham-Lal/Food-Delivery-API/blob/javascript/documentation/ASSIGNMENT.md)
-
-**Database Schema**
-[View here](https://github.com/Shubham-Lal/Food-Delivery-API/blob/javascript/documentation/SCHEMA.md)
-
-**Calculate Price**
-[View here](https://github.com/Shubham-Lal/Food-Delivery-API/blob/javascript/documentation/PRICE.md)
 
 #### Database Tables
 1. **Organization**
@@ -39,10 +30,34 @@
 
 3. **Pricing**
 
-| id | organizationId | itemId |  zone   | baseDistanceInKm | kmPrice | fixPrice |
-| -- | -------------- | ------ | ------- | ---------------- | ------- | -------- |
-| 6  |      001       |   1    |  north  |        5         |   25    |   250    |
-| 7  |      002       |   2    |  east   |        5         |   15    |   100    |
-| 8  |      003       |   3    |  west   |        5         |   10    |    50    |
-| 9  |      004       |   4    |  north  |        5         |   30    |   300    |
-| 10 |      005       |   5    | central |        5         |   150   |   1000   |
+| id | organizationId | itemId |  zone   |
+| -- | -------------- | ------ | ------- |
+| 6  |      001       |   1    |  north  |
+| 7  |      002       |   2    |  east   |
+| 8  |      003       |   3    |  west   |
+| 9  |      004       |   4    |  north  |
+| 10 |      005       |   5    | central |
+
+#### Usage
+Send a POST request on the route `https://localhost:5000/api/calculate-price` with below JSON content
+```
+{
+  "zone": "central",
+  "organization_id": "005",
+  "total_distance": 12,
+  "item_type": "perishable"
+}
+```
+to get the response with status code **200**
+```
+{
+  "success": true,
+  "total_price": 20.5
+}
+```
+
+**Database schema design**
+[View here](https://github.com/Shubham-Lal/Food-Delivery-API/blob/javascript/docs/SCHEMA.md)
+
+**Calculate price controller**
+[View here](https://github.com/Shubham-Lal/Food-Delivery-API/blob/javascript/docs/PRICE.md)

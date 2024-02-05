@@ -1,6 +1,9 @@
 # Calculate Price
 
-On the POST request to _/api/calculate-price_, `calculatePrice` controller code is called for calculating the total cost of food deliver.
+**Project Info**
+[View here](https://github.com/Shubham-Lal/Food-Delivery-API/blob/javascript/docs/ASSIGNMENT.md)
+
+On the POST request to `http://localhost:5000/api/calculate-price`, `calculatePrice` controller code is called for calculating the total cost of food delivery.
 
 ### `calculatePrice` module
 1. First and foremost, we will be validating the passed parameters in request body (req.body).
@@ -40,7 +43,7 @@ On the POST request to _/api/calculate-price_, `calculatePrice` controller code 
 }
 ```
 5. If the `validationResult` object has `success: true`, then we destructure the `validationResult.data` to get *validatedZone*, *validatedOrganizationId*, *validatedTotalDistance* and *validatedItemType*.
-6. Now we query the **Pricing** table with 
+6. Now we query the **Pricing** table and find if there exists any row for
 ```
 { organizationId: validatedOrganizationId },
 { item: { type: validatedItemType } },
@@ -55,7 +58,14 @@ and if there is no such data with matching parameters, then return
 ```
 7. If we do get any row with the matching data, then we calculate the `totalCost` with the logic 
 ```
-pricingDetails.fixPrice + ((validatedTotalDistance - pricingDetails.baseDistanceInKm) * pricingDetails.kmPrice)
+fixPrice + ((validatedTotalDistance - baseDistanceInKm) * kmPrice);
+```
+The data available:
+```
+fixPrice = 1000 cents
+validatedTotalDistance = validated total_distance
+baseDistanceInKm = 5 km
+kmPrice = decided based upon if type is "perishable" (150 cents) or "non_perishable" (100 cents)
 ```
 8. Our cost in the **Pricing** table is in *cents*. So we divide the `totalCost` with 100 to get the cost in the Euro (€) and return the response
 ```

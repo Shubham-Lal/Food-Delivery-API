@@ -44,10 +44,6 @@ model Pricing {
 
   zone ZoneType
 
-  baseDistanceInKm Int @default(5)
-  kmPrice          Int @default(150)
-  fixPrice         Int @default(1000)
-
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   item         Item         @relation(fields: [itemId], references: [id], onDelete: Cascade)
 
