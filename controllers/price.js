@@ -102,7 +102,13 @@ module.exports.calculatePrice = async (req, res) => {
         const baseDistanceInKm = 5;
         const kmPrice = pricingDetails.item.type === "perishable" ? 150 : 100;
 
-        const totalCost = fixPrice + ((validatedTotalDistance - baseDistanceInKm) * kmPrice);
+        var totalCost = 0;
+        if (validatedTotalDistance > baseDistanceInKm) {
+            totalCost = fixPrice + ((validatedTotalDistance - baseDistanceInKm) * kmPrice);
+        }
+        else {
+            totalCost = fixPrice
+        }
 
         res.status(200).json({ success: true, total_price: (totalCost / 100) });
     } catch (error) {
