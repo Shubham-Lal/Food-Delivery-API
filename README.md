@@ -37,6 +37,16 @@ Send POST request on the `https://localhost:5000/api/calculate-price` route with
   }
   ```
 
+#### API Testing
+Created **price.test.js** inside *test* directory.
+Run `npm test` in terminal to check if the test passed or not.
+List of test cases:
+1. Return an error for missing required fields;
+2. Calculate **total_price** for *perishable* items within base distance;
+3. Calculate **total_price** for *non-perishable* items within base distance;
+4. Calculate **total_price** for *perishable* items beyond base distance;
+5. Calculate **total_price** for *non-perishable* items beyond base distance.
+
 #### Database Tables
 1. **Organization**
 

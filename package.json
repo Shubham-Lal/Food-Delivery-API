@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "npx prisma generate && npx prisma db push && node server.js",
+    "test": "jest",
     "postinstall": "prisma generate"
   },
   "dependencies": {
@@ -16,5 +17,9 @@
     "prisma": "^5.9.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
   }
 }

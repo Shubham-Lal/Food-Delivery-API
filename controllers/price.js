@@ -92,7 +92,7 @@ module.exports.calculatePrice = async (req, res) => {
             include: { item: true }
         });
         if (!pricingDetails) {
-            return res.status(200).json({
+            return res.status(400).json({
                 success: false,
                 error: "No data found"
             });

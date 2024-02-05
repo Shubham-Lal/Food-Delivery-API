@@ -57,9 +57,14 @@ and if there is no such data with matching parameters, then return
 }
 ```
 7. If we do get any row with the matching data, then we calculate the `totalCost` with the logic 
-```
-fixPrice + ((validatedTotalDistance - baseDistanceInKm) * kmPrice);
-```
+    - If validated total distance is greater than 5 km, then
+        ```
+        totalCost = fixPrice + ((validatedTotalDistance - baseDistanceInKm) * kmPrice);
+        ```
+    - Else when validated total distance is less than or equal to 5 km, then
+        ```
+        totalCost = fixPrice
+        ```
 The data available:
 ```
 fixPrice = 1000 cents
