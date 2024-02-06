@@ -112,6 +112,6 @@ module.exports.calculatePrice = async (req, res) => {
 
         res.status(200).json({ success: true, total_price: (totalCost / 100) });
     } catch (error) {
-        res.status(500).json({ success: false, error: '[server]: Internal server error' });
+        res.status(500).json({ success: false, error: "[server]: Internal server error" });
     }
 };

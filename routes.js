@@ -5,17 +5,17 @@ const swaggerJsdoc = require("swagger-jsdoc");
 const { calculatePrice } = require("./controllers/price.js");
 
 // Display homepage at "/" (GET request)
-router.get('/', (req, res) => {
-    res.render('index');
+router.get("/", (req, res) => {
+    res.render("index");
 });
 
 // Display Swagger at "/docs"
 const options = {
     definition: {
-        openapi: '3.0.0',
+        openapi: "3.0.0",
         info: {
-            title: 'Food Delivery API',
-            version: '1.0.0',
+            title: "Food Delivery API",
+            version: "1.0.0",
         },
     },
     apis: ["./controllers/price.js"],

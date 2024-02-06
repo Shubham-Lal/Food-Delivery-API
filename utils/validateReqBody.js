@@ -14,7 +14,7 @@ module.exports.validateReqBody = (req) => {
     if (missingFields.length > 0) {
         return {
             success: false,
-            error: `Missing required fields: ${missingFields.join(', ')}`,
+            error: `Missing required fields: ${missingFields.join(", ")}`,
         };
     }
 
@@ -34,7 +34,7 @@ module.exports.validateReqBody = (req) => {
             .filter(result => !!result.error)
             .map(result => result.error);
 
-        return { success: false, error: errorMessages.join(', ') };
+        return { success: false, error: errorMessages.join(", ") };
     }
 
     return {

@@ -5,6 +5,7 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  seed     = "prisma/seed.js"
 }
 
 model Organization {
@@ -19,7 +20,7 @@ enum ItemType {
 }
 
 model Item {
-  id          Int       @id @default(autoincrement())
+  id          Int       @id @db.Integer
   type        ItemType
   description String    @db.VarChar(255)
   pricings    Pricing[]
