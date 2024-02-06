@@ -1,5 +1,6 @@
-const request = require("supertest");
 const app = require("../app.js");
+const request = require("supertest");
+const { describe, it, expect } = require("@jest/globals");
 
 describe("Calculate Price API", () => {
     it("Return an error for missing required fields", async () => {
