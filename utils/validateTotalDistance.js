@@ -2,8 +2,7 @@ const validateTotalDistance = (total_distance) => {
     if (typeof total_distance !== "number") {
         return { error: "Invalid total_distance: must be a number" };
     }
-
-    if (total_distance < 0) {
+    else if (total_distance < 0) {
         return { error: "Invalid total_distance: cannot be negative" };
     }
 
