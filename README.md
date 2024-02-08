@@ -2,7 +2,9 @@
 
 [Live API URL](https://viga-food-delivery-api.vercel.app)
 
+
 #### Setup Locally
+
 Follow the below process to setup locally:
 1. Run `npm i` to install all the required packages.
 2. Create **.env** file and initialize `DATABASE_URL` and declare its value.
@@ -10,12 +12,14 @@ Follow the below process to setup locally:
     DATABASE_URL= Your PostreSQL database (Get a free one either from Supabase, Render, Vercel, etc.)
   ```
 3. Run these following commands in the terminal
-  - `npx prisma generate` This auto-generates database client into the node_modules/.prisma/client folder.
+  - `npx prisma generate` This auto-generates database client into the node_modules/.prisma/client folder. (*Optional*)
   - `npx prisma db push` This executes the changes required to make our database schema reflect the state of our Prisma schema.
   - `npx prisma db seed` This adds our custom row datas into the Organization, Item and Pricing tables.
 4. Now since everything is setup, we can finally run `npm run dev` command in terminal to start the development server locally.
 
+
 #### Usage
+
 Send POST request on the `https://localhost:5000/api/calculate-price` route with JSON content:
 - **perishable** food item
   ```
@@ -50,7 +54,9 @@ Send POST request on the `https://localhost:5000/api/calculate-price` route with
   }
   ```
 
+
 #### API Testing
+
 Created **price.test.js** inside *test* directory.
 Run `npm test` in terminal to check if the test passed or not.
 List of total 10 test cases:
@@ -73,7 +79,9 @@ List of total 10 test cases:
 }
 ```
 
+
 #### Database Tables
+
 1. **Organization**
 
 | id  |   name    |
@@ -103,6 +111,9 @@ List of total 10 test cases:
 | 8  |      003       |   3    |  west   |
 | 9  |      004       |   4    |  north  |
 | 10 |      005       |   5    | central |
+
+
+#### Explanation
 
 **Database schema design**
 [View here](https://github.com/Shubham-Lal/Food-Delivery-API/blob/javascript/docs/SCHEMA.md)

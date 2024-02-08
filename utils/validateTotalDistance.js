@@ -1,4 +1,4 @@
-module.exports.validateTotalDistance = (total_distance) => {
+const validateTotalDistance = (total_distance) => {
     if (typeof total_distance !== "number") {
         return { error: "Invalid total_distance: must be a number" };
     }
@@ -9,3 +9,5 @@ module.exports.validateTotalDistance = (total_distance) => {
 
     return { data: total_distance };
 };
+
+module.exports = validateTotalDistance;

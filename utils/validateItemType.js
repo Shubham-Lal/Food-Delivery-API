@@ -1,4 +1,4 @@
-module.exports.validateItemType = (item_type) => {
+const validateItemType = (item_type) => {
     if (typeof item_type !== "string") {
         return { error: "Invalid item_type: must be a string" };
     }
@@ -12,3 +12,5 @@ module.exports.validateItemType = (item_type) => {
 
     return { data: mappedItemType };
 };
+
+module.exports = validateItemType;

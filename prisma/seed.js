@@ -3,6 +3,7 @@ const { organizationData } = require("../data/organizationData");
 const { itemData } = require("../data/itemData");
 const { pricingData } = require("../data/pricingData");
 
+
 const prisma = new PrismaClient();
 
 async function seed() {

@@ -8,7 +8,6 @@
 body {
     min-height: 100svh;
     background-color: black;
-    /* font-family: 'Courier New', Courier, monospace; */
     font-family: Helvetica;
     color: #ffffff;
     display: flex;

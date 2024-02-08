@@ -2,6 +2,7 @@ const app = require("../app.js");
 const request = require("supertest");
 const { describe, it, expect } = require("@jest/globals");
 
+
 describe("Calculate Price API", () => {
     it("Return an error for missing required fields", async () => {
         const response = await request(app)
@@ -150,6 +151,6 @@ describe("Calculate Price API", () => {
 
         expect(response.statusCode).toEqual(400);
         expect(response.body.success).toBeFalsy();
-        expect(response.body.error).toContain("No data found");
+        expect(response.body.error).toContain("No Item found");
     });
 });

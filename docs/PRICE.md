@@ -11,7 +11,7 @@ On the POST request to `http://localhost:5000/api/calculate-price`, `calculatePr
     1. The first step is to create an array of missing fields (missingFields). We are checking if the *zone*, *organization_id*, *total_distance* and *item_type* are there in the request body or not.
     2. If any of these above 4 parameters are not passed, we will be pushing the name of those parameters to the *missingFields* array.
     3. If the *missingFields* has any data, then we will return the function with `success: false` and `error` with missing field(s).
-    -4. Now as we have these 4 parameters in request body, we will now use 4 different hooks namely `validateZone`, `validateOrganizationId`, `validateTotalDistance` and `validateItemType` to validate them.
+    Now as we have these 4 parameters in request body, we will now use 4 different hooks namely `validateZone`, `validateOrganizationId`, `validateTotalDistance` and `validateItemType` to validate them.
         1. `validateZone` utility function: 
             - It takes *zone* as parameter and checks if its value is string or not. If *zone* is not string, then we will return `error`.
             - Then we check that the *zone* is in *allowedZones* array or not. If it is not in the array, then return `error`.
@@ -53,7 +53,7 @@ and if there is no such data with matching parameters, then return
 ```
 {
     success: false,
-    error: "No data found"
+    error: "No Item found"
 }
 ```
 7. If we do get any row with the matching data, then we calculate the `totalCost` with the logic 

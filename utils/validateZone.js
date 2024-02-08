@@ -1,4 +1,4 @@
-module.exports.validateZone = (zone) => {
+const validateZone = (zone) => {
     if (typeof zone !== "string") {
         return { error: "Invalid zone: must be a string" };
     }
@@ -23,3 +23,5 @@ module.exports.validateZone = (zone) => {
 
     return { data: mappedZone };
 };
+
+module.exports = validateZone;

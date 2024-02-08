@@ -1,11 +1,12 @@
 const express = require("express");
-const router = express.Router();
+const routes = express.Router();
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 const { calculatePrice } = require("./controllers/price.js");
 
+
 // Display homepage at "/" (GET request)
-router.get("/", (req, res) => {
+routes.get("/", (req, res) => {
     res.render("index");
 });
 
@@ -21,7 +22,7 @@ const options = {
     apis: ["./controllers/price.js"],
 };
 const specs = swaggerJsdoc(options);
-router.use(
+routes.use(
     "/docs",
     swaggerUi.serve,
     swaggerUi.setup(specs, {
@@ -40,6 +41,6 @@ router.use(
 );
 
 // Calculate price at "/api/calculate-price" (POST request)
-router.post("/api/calculate-price", calculatePrice);
+routes.post("/api/calculate-price", calculatePrice);
 
-module.exports = router;
+module.exports = routes;

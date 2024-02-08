@@ -1,7 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
-const { validateReqBody } = require("../utils/validateReqBody.js");
+const validateReqBody = require("../utils/validateReqBody.js");
 
-const prisma = new PrismaClient();
 
 /**
  * @swagger
@@ -66,6 +65,8 @@ const prisma = new PrismaClient();
  *                   type: string
  */
 
+const prisma = new PrismaClient();
+
 module.exports.calculatePrice = async (req, res) => {
     try {
         const validationResult = validateReqBody(req);
@@ -92,22 +93,16 @@ module.exports.calculatePrice = async (req, res) => {
             include: { item: true }
         });
         if (!pricingDetails) {
-            return res.status(400).json({
-                success: false,
-                error: "No data found"
-            });
+            return res.status(400).json({ success: false, error: "No Item found" });
         }
 
         const fixPrice = 1000;
         const baseDistanceInKm = 5;
         const kmPrice = pricingDetails.item.type === "perishable" ? 150 : 100;
 
-        var totalCost = 0;
+        var totalCost = fixPrice;
         if (validatedTotalDistance > baseDistanceInKm) {
             totalCost = fixPrice + ((validatedTotalDistance - baseDistanceInKm) * kmPrice);
-        }
-        else {
-            totalCost = fixPrice
         }
 
         res.status(200).json({ success: true, total_price: (totalCost / 100) });
